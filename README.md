@@ -1,2 +1,2 @@
 # Project
-Project package for Task Management application
+Project package used in Task Management application
