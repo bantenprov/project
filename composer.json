@@ -1,6 +1,7 @@
 {
     "name": "bantenprov/project",
     "description": "Repository untuk membuat project pada task management",
+    "licence": "MIT",
     "authors": [
         {
             "name": "bantenprov",
