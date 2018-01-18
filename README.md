@@ -1,2 +1,2 @@
-# task
-Task package for "project" Task Management application
+# Project
+Project package used in Task Management application
