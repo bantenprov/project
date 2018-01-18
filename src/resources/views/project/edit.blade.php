@@ -58,7 +58,7 @@
         <div class="panel ">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="ti-pencil"></i> Form add new project
+                    <i class="ti-pencil"></i> Form edit project
                 </h3>
                 <span class="pull-right">
                     <i class="fa fa-fw ti-angle-up clickable"></i>
@@ -66,7 +66,7 @@
             </div>
             <div class="panel-body">
                 {{--  <form action="#" class="form-horizontal">  --}}
-                {!! Form::open(['route' => 'taskManagementProjectStore','method' => 'post','class' => 'form-horizontal']) !!}  
+                {!! Form::open(['route' => ['taskManagementProjectUpdate',$project->id],'method' => 'post','class' => 'form-horizontal']) !!}  
                     <div class="form-body">                        
                         <div class="form-group m-t-10">
                             <label for="inputUsername1" class="col-sm-3 control-label">
@@ -80,7 +80,7 @@
                                     <select id="staf" name="staf_id" class="form-control">
                                         <option value="" selected disabled>-Select Staf-</option>
                                         @foreach($stafs as $staf)
-                                            <option value="{{ $staf->id }}" @if(old('staf_id') == $staf->id) selected @endif>{{ $staf->full_name }}</option>
+                                            <option value="{{ $staf->id }}" @if($project->staf_id == $staf->id) selected @endif>{{ $staf->full_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -95,7 +95,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-fw ti-ruler-pencil"></i>
                                     </span>
-                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inputUsername2" placeholder="Project Name">
+                                    <input type="text" name="name" value="{{ $project->name }}" class="form-control" id="inputUsername2" placeholder="Project Name">
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                     </span>
-                                    <input readonly name="date" type="text" class="form-control pull-right" id="reservationtime1" value="{{ old('date') }}" placeholder="YYYY-MM-DD H:mm:ss - YYYY-MM-DD H:mm:ss">
+                                    <input readonly name="date" type="text" class="form-control pull-right" id="reservationtime1" value="{{ $project->start_date }} - {{ $project->end_date }}" placeholder="YYYY-MM-DD H:mm:ss - YYYY-MM-DD H:mm:ss">
                                 </div>
                             </div>                            
                         </div>
@@ -116,7 +116,7 @@
                         <div class="form-group">
                             <label for="" class="col-sm-3 control-label">Description</label>
                             <div class="col-sm-9">
-                                <textarea name="description" id="inputContent1" rows="3"  class="form-control resize_vertical">{{ old('description') }}</textarea>
+                                <textarea name="description" id="inputContent1" rows="3"  class="form-control resize_vertical">{{ $project->description }}</textarea>
                             </div>
                         </div>
                         
@@ -124,7 +124,7 @@
                     <div>
                         <div class="row">
                             <div class="col-sm-offset-3 col-sm-9">
-                                {!! Form::submit('submit',['class' => 'btn btn-primary']) !!}
+                                {!! Form::submit('update',['class' => 'btn btn-primary']) !!}
                                 &nbsp;
                                 <button type="reset" class="btn btn-default bttn_reset">
                                     Reset
