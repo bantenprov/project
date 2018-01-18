@@ -123,8 +123,8 @@ class ProjectServiceProvider extends ServiceProvider
         $this->loadViewsFrom($packageViewsPath, 'project');
 
         $this->publishes([
-            $packageViewsPath => resource_path('views/vendor/project'),
-        ], 'views');
+            $packageViewsPath => resource_path('views/vendor'),
+        ], 'project-views');
     }
 
     /**
@@ -170,3 +170,4 @@ class ProjectServiceProvider extends ServiceProvider
         });
     }
 }
+
